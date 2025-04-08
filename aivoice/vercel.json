@@ -1,12 +1,14 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "*.html",
-            "use": "@vercel/static"
-        }
-    ],
+    "buildCommand": "",
+    "outputDirectory": ".",
+    "public": true,
+    "cleanUrls": true,
     "routes": [
+        {
+            "src": "/styles.css",
+            "headers": { "Content-Type": "text/css" }
+        },
         {
             "src": "/(.*)",
             "dest": "/index.html"
@@ -18,7 +20,7 @@
             "headers": [
                 {
                     "key": "Cache-Control",
-                    "value": "no-cache"
+                    "value": "no-cache, no-store, must-revalidate"
                 },
                 {
                     "key": "Access-Control-Allow-Origin",
