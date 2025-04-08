@@ -1,11 +1,14 @@
 {
     "version": 2,
+    "builds": [
+        {
+            "src": "*.html",
+            "use": "@vercel/static"
+        }
+    ],
     "routes": [
         {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/.*",
+            "src": "/(.*)",
             "dest": "/index.html"
         }
     ],
@@ -15,7 +18,11 @@
             "headers": [
                 {
                     "key": "Cache-Control",
-                    "value": "public, max-age=0, must-revalidate"
+                    "value": "no-cache"
+                },
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
                 }
             ]
         }
